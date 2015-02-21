@@ -48,7 +48,7 @@ def encode_message(message, passkey):
             encoded_message += " "
         
         elif char not in cipher_library[0] and char != " ": #if not in cipher library
-            encoded_message += char                         #will pass char through
+            next                                            #will omit char.
         
         else:
             encoded_letter = cipher_library[key_library[passencoder[count]]][char]
