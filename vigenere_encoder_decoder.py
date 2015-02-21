@@ -27,20 +27,22 @@ cipher_library = [{"A": "A", "B": "B", "C": "C", "D": "D", "E": "E", "F": "F", "
                   
 ]
 
-#key_library = {0: "A", 1: "B", 2: "C", 3: "D", 4: "E", 5: "F", 6: "G", 7: "H", 8: "I", 9: "J", 10: "K", 11: "L", 12: "M", 13: "N", 14: "O", 15: "P", 16: "Q", 17: "R", 18: "S", 19: "T", 20: "U", 21: "V", 22: "W", 23: "X", 24: "Y", 25: "Z"}
+
 key_library = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7, "I": 8, "J": 9, "K": 10, "L": 11, "M": 12, "N": 13, "O": 14, "P": 15, "Q": 16, "R": 17, "S": 18, "T": 19, "U": 20, "V": 21, "W": 22, "X": 23, "Y": 24, "Z": 25}
-#print cipher_library[key_library["C"]]["B"]
 
-message = raw_input("Input message to encode: ").upper()
-passkey = raw_input("Input keyword to encode: ").upper()
-passencoder = passkey
-encoded_message = ""
-count = 0
 
-while len(passencoder) < len(message):
-    passencoder += passkey
+    
+    
 
-def encode_message(message, passencoder):
+
+def encode_message(message, passkey):
+    passencoder = passkey
+    encoded_message = ""
+    count = 0
+
+    while len(passencoder) < len(message):
+        passencoder += passkey
+
     for char in message:
         if char == " ":
             encoded_message += " "
@@ -55,13 +57,34 @@ def encode_message(message, passencoder):
 
     print encoded_message
 
-count = 0
-decoded_message = ""
-for c in encoded_message:
-    for key, char in cipher_library[key_library[passencoder[count]]].items():
-        if char == c:
-            decoded_message += key
-            count += 1
+def decode_message(encoded_message, passkey):
+    passencoder = passkey
+    while len(passencoder) < len(encoded_message):
+        passencoder += passkey
+    count = 0
+    decoded_message = ""
+    for c in encoded_message:
+        if c == " ":
+            decoded_message += " "
+        for key, char in cipher_library[key_library[passencoder[count]]].items():
+            if char == c:
+                decoded_message += key
+                count += 1
 
     
-print decoded_message
+    print decoded_message
+
+
+user_option = 97
+while user_option != 0:
+    user_option = int(raw_input("Enter '1' to encode a message." '\n' 
+                            "Enter '2' to decode a message." '\n' 
+                            "Enter '0' to quit: "))
+    if user_option == 0:
+        quit
+
+    elif user_option == 1:
+        encode_message(raw_input("Input message to encode: ").upper(), passkey = raw_input("Input keyword to encode: ").upper())
+
+    elif user_option == 2:
+        decode_message(raw_input("Input message to decode: ").upper(), passkey = raw_input("Input keyword to decode: ").upper())
