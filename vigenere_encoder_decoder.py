@@ -41,18 +41,18 @@ def encode_message(message, passkey):
     count = 0
 
     while len(passencoder) < len(message):
-        passencoder += passkey
+        passencoder += passkey      #ensures passencode is longer than message
 
     for char in message:
         if char == " ":
-            encoded_message += " "
+            encoded_message += " "      #passes blank spaces through
         
         elif char not in cipher_library[0] and char != " ": #if not in cipher library
             next                                            #will omit char.
         
         else:
-            encoded_letter = cipher_library[key_library[passencoder[count]]][char]
-            encoded_message += encoded_letter
+            encoded_letter = cipher_library[key_library[passencoder[count]]][char]        #looks up encoded letter using dictionary 
+                  encoded_message += encoded_letter                                       #passencoder[count] indicates                   
             count += 1
 
     print encoded_message
