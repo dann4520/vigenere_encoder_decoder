@@ -41,7 +41,7 @@ def encode_message(message, passkey):
     count = 0
 
     while len(passencoder) < len(message):
-        passencoder += passkey      #ensures passencode is longer than message
+        passencoder += passkey
 
     for char in message:
         if char == " ":
@@ -52,7 +52,7 @@ def encode_message(message, passkey):
         
         else:
             encoded_letter = cipher_library[key_library[passencoder[count]]][char]        #looks up encoded letter using dictionary 
-                  encoded_message += encoded_letter                                       #passencoder[count] indicates                   
+            encoded_message += encoded_letter                                       #passencoder[count] indicates                   
             count += 1
 
     print encoded_message
@@ -75,16 +75,20 @@ def decode_message(encoded_message, passkey):
     print decoded_message
 
 
-user_option = 97
-while user_option != 0:
-    user_option = int(raw_input("Enter '1' to encode a message." '\n' 
+user_option = ""
+while user_option != "0":
+    user_option = raw_input("Enter '1' to encode a message." '\n' 
                             "Enter '2' to decode a message." '\n' 
-                            "Enter '0' to quit: "))
-    if user_option == 0:
-        quit
+                            "Enter '0' to quit: ")
+    if user_option == "0":
+        next
 
-    elif user_option == 1:
+    elif user_option == "1":
         encode_message(raw_input("Input message to encode: ").upper(), passkey = raw_input("Input keyword to encode: ").upper())
 
-    elif user_option == 2:
+    elif user_option == "2":
         decode_message(raw_input("Input message to decode: ").upper(), passkey = raw_input("Input keyword to decode: ").upper())
+
+    else:
+        print "Invalid selection.  Please try again."
+        next
