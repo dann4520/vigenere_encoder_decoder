@@ -56,6 +56,7 @@ def encode_message(message, passkey):
             count += 1
 
     print encoded_message
+    raw_input("Press Enter to continue...")
 
 def decode_message(encoded_message, passkey):
     passencoder = passkey
@@ -73,7 +74,7 @@ def decode_message(encoded_message, passkey):
 
     
     print decoded_message
-
+    raw_input("Press Enter to continue...")
 
 user_option = ""
 while user_option != "0":
