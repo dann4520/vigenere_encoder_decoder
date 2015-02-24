@@ -81,7 +81,7 @@ while user_option != "0":
                             "Enter '2' to decode a message." '\n' 
                             "Enter '0' to quit: ")
     if user_option == "0":
-        next
+        print "Quitting is not cool"
 
     elif user_option == "1":
         encode_message(raw_input("Input message to encode: ").upper(), passkey = raw_input("Input keyword to encode: ").upper())
@@ -91,4 +91,4 @@ while user_option != "0":
 
     else:
         print "Invalid selection.  Please try again."
-        next
+        
