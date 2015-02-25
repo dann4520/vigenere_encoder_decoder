@@ -10,4 +10,5 @@ User will be prompted to enter the message they wish decoded and the keyword use
 If correct keyword is entered decoded message will be returned.
 If incorrect encoded message or keyword is entered jibberish will be returned.
 
-Encoder will discard any punctiation (i.e. "." "!" "?").  In fact it will discard anything entered which is not an alpha chracter or a space(" ").
+Encoder and decoder will discard any punctiation (i.e. "." "!" "?").  In fact it will discard anything entered which is not an alpha chracter or a space(" ").
+
