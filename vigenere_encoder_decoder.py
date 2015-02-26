@@ -1,3 +1,4 @@
+#written using Python 2.7.8
 cipher_library = [{"A": "A", "B": "B", "C": "C", "D": "D", "E": "E", "F": "F", "G": "G", "H": "H", "I": "I", "J": "J", "K": "K", "L": "L", "M": "M", "N": "N", "O": "O", "P": "P", "Q": "Q", "R": "R", "S": "S", "T": "T", "U": "U", "V": "V", "W": "W", "X": "X", "Y": "Y", "Z": "Z"},
                   {"A": "B", "B": "C", "C": "D", "D": "E", "E": "F", "F": "G", "G": "H", "H": "I", "I": "J", "J": "K", "K": "L", "L": "M", "M": "N", "N": "O", "O": "P", "P": "Q", "Q": "R", "R": "S", "S": "T", "T": "U", "U": "V", "V": "W", "W": "X", "X": "Y", "Y": "Z", "Z": "A"},
                   {"A": "C", "B": "D", "C": "E", "D": "F", "E": "G", "F": "H", "G": "I", "H": "J", "I": "K", "J": "L", "K": "M", "L": "N", "M": "O", "N": "P", "O": "Q", "P": "R", "Q": "S", "R": "T", "S": "U", "T": "V", "U": "W", "V": "X", "W": "Y", "X": "Z", "Y": "A", "Z": "B"},
@@ -40,7 +41,7 @@ def encode_message(message, passkey):
     encoded_message = ""
     count = 0
 
-    while len(passencoder) < len(message):
+    while len(passencoder) < len(message): #ensures we have a long enough passencoder
         passencoder += passkey
 
     for char in message:
@@ -59,6 +60,7 @@ def encode_message(message, passkey):
     raw_input("Press Enter to continue...")
 
 def decode_message(encoded_message, passkey):
+#provided with an encoded message and the proper passkey will return decoded message
     passencoder = passkey
     while len(passencoder) < len(encoded_message):
         passencoder += passkey
